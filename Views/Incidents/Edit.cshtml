@@ -1,54 +1,156 @@
-﻿@model WebApplication8.Models.Incident
+@model WebApplication8.Models.Incident
 
 @{
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<style>
+    /* ===== INCIDENT FORM (Create/Edit) ===== */
+    .incident-form-container {
+        max-width: 650px;
+        margin: 50px auto;
+        background: #ffffff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    }
 
-<h4>Incident</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateReported" class="control-label"></label>
-                <input asp-for="DateReported" class="form-control" />
-                <span asp-validation-for="DateReported" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="VolunteerId" class="control-label"></label>
-                <select asp-for="VolunteerId" class="form-control" asp-items="ViewBag.VolunteerId"></select>
-                <span asp-validation-for="VolunteerId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Status" class="control-label"></label>
-                <input asp-for="Status" class="form-control" />
-                <span asp-validation-for="Status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
+        .incident-form-container h1 {
+            text-align: center;
+            color: #004c99;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+    .form-subtitle {
+        text-align: center;
+        color: #555;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .incident-form-container hr {
+        border: 1px solid #004c99;
+        width: 60px;
+        margin: 0 auto 30px auto;
+    }
+
+    .incident-form .form-group label {
+        font-weight: 600;
+        color: #004c99;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .incident-form .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+        .incident-form .form-control:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.1);
+        }
+
+    .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+    }
+
+        .form-buttons .btn-primary {
+            width: 48%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: #004c99;
+            border: none;
+            transition: background-color 0.3s ease;
+        }
+
+            .form-buttons .btn-primary:hover {
+                background-color: #003366;
+            }
+
+        .form-buttons .btn-secondary {
+            width: 48%;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: 600;
+            background-color: #ccc;
+            color: #333;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+            .form-buttons .btn-secondary:hover {
+                background-color: #999;
+                color: #fff;
+            }
+
+    .text-danger {
+        font-size: 0.9rem;
+        color: #cc0000;
+    }
+
+</style>
+<div class="incident-form-container">
+    <h1>Edit Incident</h1>
+    <p class="form-subtitle">Update the details of this incident below.</p>
+    <hr />
+
+    <form asp-action="Edit" class="incident-form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" placeholder="Enter incident title (e.g., Flood in Durban)" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Description" class="control-label"></label>
+            <textarea asp-for="Description" class="form-control" placeholder="Describe the incident briefly"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="DateReported" class="control-label"></label>
+            <input asp-for="DateReported" class="form-control" type="date" />
+            <span asp-validation-for="DateReported" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="VolunteerId" class="control-label"></label>
+            <select asp-for="VolunteerId" class="form-control" asp-items="ViewBag.VolunteerId">
+                <option value="">-- Select Volunteer --</option>
+            </select>
+            <span asp-validation-for="VolunteerId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Status" class="control-label"></label>
+            <input asp-for="Status" class="form-control" placeholder="Enter current status (e.g., Pending, Resolved)" />
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <div class="form-buttons">
+            <input type="submit" value="Update Incident" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+    </form>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
