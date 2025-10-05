@@ -1,59 +1,134 @@
-﻿@model IEnumerable<WebApplication8.Models.Incident>
+@model IEnumerable<WebApplication8.Models.Incident>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<style>
+    /* ===== INCIDENT INDEX PAGE ===== */
+    .incident-index-container {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateReported)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Volunteer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateReported)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Volunteer.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        .incident-index-container h1 {
+            text-align: center;
+            color: #004c99;
+            font-weight: 700;
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+    .index-subtitle {
+        text-align: center;
+        color: #555;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .index-actions {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+        .index-actions .btn-primary {
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+            .index-actions .btn-primary:hover {
+                background-color: #003366;
+            }
+
+    .incident-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+        .incident-table th {
+            background-color: #004c99;
+            color: #fff;
+            font-weight: 600;
+            padding: 12px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .incident-table td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+
+        .incident-table tr {
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .incident-table .btn {
+            margin-right: 5px;
+            font-size: 0.85rem;
+        }
+
+        .incident-table .btn-info {
+            background-color: #17a2b8;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+
+            .incident-table .btn-info:hover {
+                background-color: #117a8b;
+            }
+
+        .incident-table .btn-danger {
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+
+
+</style>
+<div class="incident-index-container">
+    <h1>Reported Incidents</h1>
+    <p class="index-subtitle">View all incidents reported by volunteers. You can edit, view details, or remove any record.</p>
+    <div class="index-actions">
+        <a asp-action="Create" class="btn btn-primary">Report New Incident</a>
+    </div>
+
+    <table class="table table-striped incident-table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Title)</th>
+                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                <th>@Html.DisplayNameFor(model => model.DateReported)</th>
+                <th>@Html.DisplayNameFor(model => model.Volunteer)</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => item.DateReported)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Volunteer.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Edit</a>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Details</a>
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
