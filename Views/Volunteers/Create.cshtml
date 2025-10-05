@@ -1,80 +1,47 @@
-<style>
-    body {
-        background-color: #f8faff;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+@model WebApplication8.Models.Volunteer
 
-    h1, h3, h4 {
-        color: #1e3a8a;
-        font-weight: 700;
-        text-align: center;
-    }
+@{
+    ViewData["Title"] = "Create";
+}
 
-    h3 {
-        color: #b91c1c;
-        margin-bottom: 20px;
-    }
+<h1>Create</h1>
 
-    hr {
-        border: 1px solid #2563eb;
-        width: 80%;
-        margin: 10px auto 30px auto;
-    }
+<h4>Volunteer</h4>
+<hr />
+<div class="form-container">
+    <div class="row">
+        <div class="col-md-6">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-    .delete-container {
-        background: white;
-        width: 60%;
-        margin: 0 auto;
-        padding: 30px 40px;
-        border-radius: 15px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+                <div class="form-group">
+                    <label asp-for="FullName" class="control-label"></label>
+                    <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
 
-    dl {
-        margin: 0;
-    }
+                <div class="form-group">
+                    <label asp-for="Email" class="control-label"></label>
+                    <input asp-for="Email" class="form-control" placeholder="Enter email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
 
-    dt {
-        font-weight: 600;
-        color: #1e3a8a;
-        padding: 8px 0;
-    }
+                <div class="form-group">
+                    <label asp-for="PhoneNumber" class="control-label"></label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
 
-    dd {
-        padding: 8px 0;
-        border-bottom: 1px solid #e2e8f0;
-        color: #1f2937;
-    }
+                <div class="form-group">
+                    <label asp-for="DateJoined" class="control-label"></label>
+                    <input asp-for="DateJoined" type="date" class="form-control" />
+                    <span asp-validation-for="DateJoined" class="text-danger"></span>
+                </div>
 
-    form {
-        text-align: center;
-        margin-top: 25px;
-    }
+                <div class="form-group">
+                    <label asp-for="Status" class="control-label"></label>
+                    <input asp-for="Status" class="form-control" placeholder="e.g. Active, Pending" />
+                    <span asp-validation-for="Status" class="text-danger"></span>
+                </div>
 
-    .btn-danger {
-        background-color: #dc2626;
-        border: none;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 8px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-danger:hover {
-        background-color: #b91c1c;
-    }
-
-    a {
-        color: #1e3a8a;
-        font-weight: 600;
-        text-decoration: none;
-        margin-left: 10px;
-    }
-
-    a:hover {
-        color: #2563eb;
-        text-decoration: underline;
-    }
-</style>
+               
