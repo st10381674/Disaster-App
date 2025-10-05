@@ -3,6 +3,86 @@
 @{
     ViewData["Title"] = "Delete";
 }
+<style>
+    body {
+        background-color: #f8faff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1, h3, h4 {
+        color: #1e3a8a;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    h3 {
+        color: #b91c1c;
+        margin-bottom: 20px;
+    }
+
+    hr {
+        border: 1px solid #2563eb;
+        width: 80%;
+        margin: 10px auto 30px auto;
+    }
+
+    .delete-container {
+        background: white;
+        width: 60%;
+        margin: 0 auto;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    dl {
+        margin: 0;
+    }
+
+    dt {
+        font-weight: 600;
+        color: #1e3a8a;
+        padding: 8px 0;
+    }
+
+    dd {
+        padding: 8px 0;
+        border-bottom: 1px solid #e2e8f0;
+        color: #1f2937;
+    }
+
+    form {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+    .btn-danger {
+        background-color: #dc2626;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+        background-color: #b91c1c;
+    }
+
+    a {
+        color: #1e3a8a;
+        font-weight: 600;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+
+    a:hover {
+        color: #2563eb;
+        text-decoration: underline;
+    }
+</style>
 
 
 <h1>Delete</h1>
@@ -50,4 +130,5 @@
         <a asp-action="Index">Back to List</a>
     </form>
 </div>
+
 
