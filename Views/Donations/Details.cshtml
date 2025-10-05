@@ -1,48 +1,116 @@
-﻿@model WebApplication8.Models.Donation
+@model WebApplication8.Models.Donation
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<style>
+    /* ===== DONATION DETAILS ===== */
+    .form-header h1 {
+        text-align: center;
+        color: #004c99;
+        font-weight: 700;
+        font-size: 2.2rem;
+        margin-bottom: 5px;
+    }
 
-<div>
-    <h4>Donation</h4>
+    .form-header h4 {
+        text-align: center;
+        color: #555;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+
+    .form-header hr {
+        border: 1px solid #004c99;
+        width: 60px;
+        margin: 0 auto 30px auto;
+    }
+
+    .details-container h4 {
+        text-align: center;
+        color: #004c99;
+        font-weight: 600;
+        margin-bottom: 15px;
+    }
+
+    .details-container dl {
+        background: #ffffff;
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .action-links {
+        text-align: center;
+        margin-top: 25px;
+    }
+
+        .action-links .btn-primary {
+            padding: 10px 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+            .action-links .btn-primary:hover {
+                background-color: #003366;
+            }
+
+    .back-link {
+        display: inline-block;
+        margin-left: 15px;
+        text-decoration: none;
+        color: #004c99;
+        font-weight: 600;
+        transition: color 0.3s ease;
+    }
+
+        .back-link:hover {
+            color: #002e66;
+        }
+
+</style>
+<div class="form-header">
+    <h1>Donation Details</h1>
+    <h4>Review the information below</h4>
+    <hr />
+</div>
+
+<div class="details-container">
+    <h4>Donation Information</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DonorName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonorName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DonationType)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DonationType)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Quantity)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Quantity)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.DateDonated)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DateDonated)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Status)
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+
+<div class="action-links">
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit Donation</a> |
+    <a asp-action="Index" class="back-link">Back to Donations</a>
 </div>
+
+
