@@ -4,6 +4,86 @@
     ViewData["Title"] = "Details";
 }
 
+<style>
+<style>
+    body {
+        background-color: #f8faff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1, h4 {
+        color: #1e3a8a;
+        font-weight: 700;
+        text-align: center;
+    }
+
+    hr {
+        border: 1px solid #2563eb;
+        width: 80%;
+        margin: 10px auto 30px auto;
+    }
+
+    .details-container {
+        background: white;
+        width: 60%;
+        margin: 0 auto;
+        padding: 30px 40px;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    dl {
+        margin: 0;
+    }
+
+    dt {
+        font-weight: 600;
+        color: #1e3a8a;
+        padding: 8px 0;
+    }
+
+    dd {
+        padding: 8px 0;
+        border-bottom: 1px solid #e2e8f0;
+        color: #1f2937;
+    }
+
+    a {
+        color: #1e3a8a;
+        font-weight: 600;
+        text-decoration: none;
+        margin-right: 10px;
+    }
+
+    a:hover {
+        color: #2563eb;
+        text-decoration: underline;
+    }
+
+    .btn-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .btn-link {
+        display: inline-block;
+        background-color: #1e3a8a;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-link:hover {
+        background-color: #2563eb;
+    }
+
+    .row {
+        margin-bottom: 10px;
+    }
+</style>
 
 <h1>Details</h1>
 
@@ -47,4 +127,5 @@
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
 
