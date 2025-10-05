@@ -1,59 +1,116 @@
-﻿@model IEnumerable<WebApplication8.Models.Volunteer>
+@model IEnumerable<WebApplication8.Models.Volunteer>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Volunteers";
 }
 
-<h1>Index</h1>
+<style>
+    body {
+        background-color: #f8faff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    h1 {
+        color: #1e3a8a;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .btn-primary {
+        background-color: #1e3a8a;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16px;
+        font-weight: 600;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+        background-color: #2563eb;
+    }
+
+    .table {
+        width: 90%;
+        margin: 0 auto;
+        border-collapse: separate;
+        border-spacing: 0 10px;
+    }
+
+    .table th {
+        background-color: #2563eb;
+        color: white;
+        padding: 10px;
+        text-align: center;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+
+    .table td {
+        background-color: #ffffff;
+        padding: 12px;
+        text-align: center;
+        border: 1px solid #e5e7eb;
+        transition: transform 0.2s;
+    }
+
+    .table tr:hover td {
+        background-color: #f1f5ff;
+        transform: scale(1.01);
+    }
+
+    .action-links a {
+        color: #1e3a8a;
+        font-weight: 500;
+        text-decoration: none;
+        margin: 0 5px;
+    }
+
+    .action-links a:hover {
+        text-decoration: underline;
+        color: #2563eb;
+    }
+
+    .create-btn {
+        display: block;
+        width: fit-content;
+        margin: 0 auto 20px auto;
+        text-align: center;
+    }
+</style>
+
+<h1>Volunteer Management</h1>
+
+<div class="create-btn">
+    <a asp-action="Create" class="btn btn-primary">➕ Add New Volunteer</a>
+</div>
+
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhoneNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateJoined)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th></th>
+            <th>@Html.DisplayNameFor(model => model.FullName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+            <th>@Html.DisplayNameFor(model => model.DateJoined)</th>
+            <th>@Html.DisplayNameFor(model => model.Status)</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateJoined)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FullName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.PhoneNumber)</td>
+                <td>@Html.DisplayFor(modelItem => item.DateJoined)</td>
+                <td>@Html.DisplayFor(modelItem => item.Status)</td>
+                <td class="action-links">
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
