@@ -1,47 +1,154 @@
-@model WebApplication8.Models.Volunteer
+@model WebApplication9.Models.Volunteer
 
 @{
     ViewData["Title"] = "Create";
 }
 
+<style>
+    body {
+        background-color: #f5f7ff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1, h4 {
+        color: #1e3a8a;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    hr {
+        border: 1px solid #2563eb;
+        width: 80%;
+        margin: 15px auto;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .col-md-4 {
+        background-color: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 25px 30px;
+        width: 400px;
+        transition: 0.3s ease;
+    }
+
+        .col-md-4:hover {
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: 600;
+        color: #1e3a8a;
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input.form-control {
+        width: 100%;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 10px;
+        transition: all 0.3s;
+    }
+
+        input.form-control:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 4px rgba(37, 99, 235, 0.3);
+            outline: none;
+        }
+
+    .text-danger {
+        font-size: 0.9em;
+        color: #dc2626;
+    }
+
+    .btn-primary {
+        background-color: #2563eb;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+        }
+
+    a {
+        color: #1e3a8a;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+        a:hover {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+
+</style>
 <h1>Create</h1>
 
 <h4>Volunteer</h4>
 <hr />
-<div class="form-container">
-    <div class="row">
-        <div class="col-md-6">
-            <form asp-action="Create">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateJoined" class="control-label"></label>
+                <input asp-for="DateJoined" class="form-control" />
+                <span asp-validation-for="DateJoined" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Status" class="control-label"></label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
 
-                <div class="form-group">
-                    <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                </div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
-                <div class="form-group">
-                    <label asp-for="Email" class="control-label"></label>
-                    <input asp-for="Email" class="form-control" placeholder="Enter email" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
-                </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
 
-                <div class="form-group">
-                    <label asp-for="PhoneNumber" class="control-label"></label>
-                    <input asp-for="PhoneNumber" class="form-control" placeholder="Enter phone number" />
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="DateJoined" class="control-label"></label>
-                    <input asp-for="DateJoined" type="date" class="form-control" />
-                    <span asp-validation-for="DateJoined" class="text-danger"></span>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="Status" class="control-label"></label>
-                    <input asp-for="Status" class="form-control" placeholder="e.g. Active, Pending" />
-                    <span asp-validation-for="Status" class="text-danger"></span>
-                </div>
 
                
+
